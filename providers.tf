@@ -17,3 +17,17 @@ terraform {
 provider "aws" {
   region = "ap-southeast-2"
 }
+
+provider "cdo" {
+  api_token = var.cdo_api_token
+  base_url  = var.cdo_base_url
+}
+
+provider "vsphere" {
+  user           = var.vsphere_username
+  password       = var.vsphere_password
+  vsphere_server = var.vsphere_server
+
+  # if you have a self-signed cert
+  allow_unverified_ssl = var.allow_unverified_ssl
+}

@@ -19,12 +19,6 @@ resource "vsphere_virtual_machine" "ftd_vm" {
     size             = data.vsphere_virtual_machine.ftd_template.disks.0.size
     thin_provisioned = data.vsphere_virtual_machine.ftd_template.disks.0.thin_provisioned
   }
-  disk {
-    label            = "disk1"
-    size             = data.vsphere_virtual_machine.ftd_template.disks.1.size
-    thin_provisioned = data.vsphere_virtual_machine.ftd_template.disks.1.thin_provisioned
-    unit_number      = 2
-  }
   clone {
     template_uuid = data.vsphere_virtual_machine.ftd_template.id
   }

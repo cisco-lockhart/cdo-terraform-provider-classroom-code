@@ -2,6 +2,19 @@ variable "vm_folder" {
   type = string
 }
 
+variable "cdo_base_url" {
+  description = "The base CDO URL. This is the URL you enter when logging into your CDO account."
+  type        = string
+  # this is being used in Cisco Live Melbourne, so we're using CDO in APJ
+  default = "https://apj.cdo.cisco.com"
+}
+
+variable "cdo_api_token" {
+  description = "The API token used to authenticate with CDO. Watch this video to learn how to generate this value: https://app.vidcast.io/share/e3fb2957-0991-4a98-a256-46485323a703. Please enter this value in secrets.auto.tfvars."
+  type        = string
+  sensitive   = true
+}
+
 variable "vsphere_server" {
   description = "Specify the vCenter Server FQDN or IP Address for vSphere API operations."
   type        = string
@@ -62,4 +75,14 @@ variable "asa_vsphere_template_name" {
 
 variable "ftd_vsphere_template_name" {
   type = string
+}
+
+variable "classroom_namespace" {
+  type    = string
+  default = "cl-melbourne"
+}
+
+variable "msp_employees" {
+  description = "Specify a list of CDO users you want to add to this tenant with superadmin privileges. We have provided default values in terraform.auto.tfvars in case you do not wish to enter your own. These users have to have valid Cisco Security accounts."
+  type        = set(string)
 }

@@ -28,6 +28,6 @@ data "vsphere_virtual_machine" "asa_template" {
 }
 
 data "vsphere_virtual_machine" "ftd_template" {
-  name          = var.asa_vsphere_template_name
+  name          = var.ftd_vsphere_template_name
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
